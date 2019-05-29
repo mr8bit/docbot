@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DocBot</title>
+    <link href="../static/normoliza.css" rel="stylesheet"/>
+    <link href="../static/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../static/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container-fluid header d-flex align-items-center align-content-center">
+    <div class="container d-flex justify-content-center">
+        <h1 class="font-weight-bold text-white">DocBot</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5" style="padding-top: 20px">
+            <form class="card" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Что болит?</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" name="question"
+                                      rows="3">{{ context.question }}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5" style="padding-top: 20px">
+            {% if context.answer %}
+                <div class="form-group">
+                    <label for="staticEmail" class="col-form-label">Ответ от доктора</label>
+                    <span class="btn btn-success">Точность ответа: {{ context.score }}</span>
+
+                    <div class="form-control-plaintext">{{ context.answer }}</div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
