@@ -1,3 +1,6 @@
 venv
 *.vec
 *.bin
+
+__pycache__
+.ide

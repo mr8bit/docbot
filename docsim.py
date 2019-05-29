@@ -7,10 +7,10 @@ from nltk.corpus import stopwords
 class DocSim(object):
     def __init__(self, w2v_model, dataset_path):
         self.w2v_model = w2v_model
-        self.stop_words = stopwords.words("russian")
-        self.dataset = pd.read_csv(dataset_path, sep="\t")
-        self.dataset.columns = ["question", "answer"]
-        self.dataset['question'] = self.dataset['question'].apply(lambda x: self.text_POS_tag(x))
+        self.stop_words = stopwords.words("russian") # загрузка стоп слов
+        self.dataset = pd.read_csv(dataset_path, sep="\t") # чтение базы данных с вопросами и ответами
+        self.dataset.columns = ["question", "answer"] # устанавливаем имена колонок
+        self.dataset['question'] = self.dataset['question'].apply(lambda x: self.text_POS_tag(x)) # чистим текст и добавляем часть речи
 
     def word_post_tag(self, word):
         """Преобразовывает слова в их нормальную форму и выводит часть речи"""
